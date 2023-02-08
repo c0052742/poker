@@ -1,0 +1,61 @@
+/* NAVBAR STYLING STARTS */
+
+.navbar {
+display: flex;
+align-items: center;
+justify-content: center;
+padding: 10px;
+background-color:#de0606c0;
+color:white;}
+
+.navUl li {
+list-style:none;
+display: inline-block;
+color: white;
+text-align: center;
+padding: 6px;
+  }
+.nav-links{
+color: #fff;
+text-decoration: none;
+display: flex;
+gap: 0.5em;
+font-size: 18px;
+  }
+  
+  /* LOGO */
+  
+.logo {
+height : 3%;
+width : 3%;
+background-size: contain;
+justify-content: flex-end;
+  }
+  /* NAVBAR MENU */
+
+.navUl li:hover {
+ display: inline-block;
+ position: relative;
+ color: #0087ca;
+
+  }
+
+.navUl li:after {
+
+ content: '';
+ position: absolute;
+ width: 100%;
+ transform: scaleX(0);
+ height: 2px;
+ bottom: 0;
+ left: 0;
+ background-color: #020c11;
+ transform-origin: bottom right;
+ transition: transform 0.25s ease-out;
+  }
+  
+.navUl li:hover::after {
+transform: scaleX(1);
+transform-origin: bottom left;
+  }
+  
