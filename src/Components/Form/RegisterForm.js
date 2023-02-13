@@ -1,6 +1,6 @@
 
 import { useRef,useState } from "react";
-function RegisterForm(props) {
+export function RegisterForm(props) {
   const usernameInputRef = useRef();
   const passwordInputRef = useRef();
   const emailInputRef = useRef();
@@ -20,6 +20,7 @@ function RegisterForm(props) {
     };
     props.addRegisterForm(registerData);
   }
+  
 
   return (
     <div>

@@ -19,10 +19,10 @@ export function Navbar() {
             <li className='menu'>
                 <NavLink
                 className='nav-links'
-                to="/sign"
+                to="/register"
                 activeClassName="active"
                 exact>
-                Sing in </NavLink>
+                Register </NavLink>
             </li>
             <li className='menu'>
                 <NavLink
@@ -31,6 +31,14 @@ export function Navbar() {
                 activeClassName="active"
                 exact>
                      Login </NavLink>
+            </li>
+            <li className='menu'>
+            <NavLink
+                className='nav-links' 
+                to="/stats"
+                activeClassName="active"
+                exact>
+                     Stats </NavLink>
             </li>
            </ul>
         </nav>

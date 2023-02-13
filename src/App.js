@@ -2,8 +2,9 @@ import './App.css';
 import React, {Component} from "react";
 import {Route, Routes,Link} from 'react-router-dom';
 import Home from './Pages/Home/Home';
-import SignPage from './Pages/Signin';
-import LoginPage from './Pages/Login';
+import RegisterPage from './Pages/register/Register';
+import LoginPage from './Pages/login/Login';
+import StatPage from './Pages/Stats';
 import { Navbar } from './Components/Navbar/Navbar';
 
 class App extends Component{
@@ -15,8 +16,9 @@ class App extends Component{
     <Routes>
     <Route path='/' element={<Home/>}/>
     <Route path='/home' element={<Home/>}/>
-    <Route path='/sign' element={<SignPage/>}/>
+    <Route path='/register' element={<RegisterPage/>}/>
     <Route path='/login' element={<LoginPage/>}/>
+    <Route path='/stats' element={<StatPage/>}/>
     </Routes>
     <div className="content">
        

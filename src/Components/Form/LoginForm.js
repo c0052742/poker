@@ -1,18 +1,13 @@
-import {useRef,useState} from 'react';
+import {useRef} from 'react';
 
 
 export function LoginForm(props){
-    /*const [passwordShown, setPasswordShown] = useState(false);
-    const togglePasswordVisibility = () =>{
-        setPasswordShown(passwordShown ? false:true);
-    }*/
     const usernameInputRef = useRef();
     const passwordInputRef = useRef();
     function loginSubmitHandler(event){
         event.preventDefault();
         const enteredUsername = usernameInputRef.current.value;
         const enteredPassword = passwordInputRef.current.value;
-
         const loginData = {
             username: enteredUsername,
             password: enteredPassword,
