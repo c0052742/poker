@@ -1,8 +1,7 @@
-// TODO: add css styling
 import RegisterForm from "../../Components/Form/RegisterForm";
 function RegisterPage(){
     async function addRegisterHandler(registerData){
-        fetch('/register', {
+        await fetch('/register', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(registerData)

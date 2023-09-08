@@ -1,0 +1,19 @@
+.body {
+  display: flex;
+
+  align-items: flex-start; /* Align items to the start */
+  margin-left:200px; /* Remove or adjust this margin based on your layout requirements */
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: left;
+}
+
+.summary {
+  margin-top: 150px;
+  margin-left:10px;
+  margin-right: 240px; /* Adjust this margin based on your layout requirements */
+  color: #E2E4F1;
+  font-family: monospace;
+  font-size: 18px;
+  max-width: 600px; /* Add a maximum width to limit the text length */
+}

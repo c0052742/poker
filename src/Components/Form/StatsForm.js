@@ -1,107 +1,108 @@
 import {useRef,  useState } from 'react';
+import './form.css';
 export function StatFrom(props){
-    const [winnings, setWinnings] = useState(0);
-    const [buyin, setBuyin] = useState(0);
-    const changeWinnings =(event) =>{
-        setWinnings(event.target.value);
-    }
-    const changeBuyin =(event)=>{
-        setBuyin(event.target.value);
-    }
-    const gameNameInputRef = useRef();
+    const [showRebuyAmount, setShowRebuyAmount] = useState(false);
+    const toggleRebuyAmount = () => {
+        setShowRebuyAmount(rebuyInputRef.current.checked);
+      };
     const gameDateInputRef = useRef();
     const placeInputRef = useRef();
-    const wonInputRef = useRef(null);
     const amountWonInputRef = useRef();
     const buyinInputRef = useRef();
+    const rebuyInputRef = useRef(null);
+    const rebuyAmountRef = useRef();
 
     function StatSubmitHandler(event){
        
         event.preventDefault();
-        const enteredGameName = gameNameInputRef.current.value;
+
         const enteredGameDate = gameDateInputRef.current.value;
         const enteredPlace = placeInputRef.current.value;
-        const enteredWon = wonInputRef.current.checked;
         const enteredAmountWon = amountWonInputRef.current.value;
         const enteredBuyin = buyinInputRef.current.value;
+        const enteredRebuy = rebuyInputRef.current.checked;
+        const enteredRebuyAmount = enteredRebuy ? rebuyAmountRef.current.value : 0;
+
 
         const statsData = {
-            gameName: enteredGameName,
             gameDate: enteredGameDate,
             place: enteredPlace,
-            won: enteredWon,
             amountWon: enteredAmountWon,
             buyin: enteredBuyin,
+            rebuy:enteredRebuy,
+            rebuyAmount:enteredRebuyAmount,
         }
-        props.StatLoginForm(statsData);
+        props.addStatsForm(statsData);
     }
     
     return (
-    <div>
-        <div className="FormContainer">
-        
-        <form onSubmit={StatSubmitHandler}>
-            <div >Submit Stats</div>
-            <div>
-                <h>Game name</h>
-                <input type='text' 
-                required id='GameName' 
-                placeholder='Name' 
-                ref={gameNameInputRef}/>
+        <div className="body">
+        <form className='form' onSubmit={StatSubmitHandler}>
+            <div className="title">Submit Stats</div>
+            <div className="input-container ic1">
+                <input type="date" required id="date" className="input" ref={gameDateInputRef} />
+                <div className="cut"></div>
+                <label htmlFor="date" className="placeholder">Date</label>
             </div>
-            <div>
-                <h>Date</h>
-                <input type='date'
-                    required id='date'
-                    placeholder='0000-00-00'
-                    ref={gameDateInputRef}
-                />
+            <div className="input-container ic2">
+                <input type="number" required id="place" min={1} className="input" ref={placeInputRef} />
+                <div className="cut"></div>
+                <label htmlFor="place" className="placeholder">Placement</label>
             </div>
-            <div>
-                <h>Placement</h>
-                <input type='text'
-                required id='place'
-                placeholder='1,2,3'
-                ref={placeInputRef}
-                />
-            </div>
-            <div>
-                <h>Did you win?</h>
-                <input type="checkbox" 
-                defaultChecked={false}
-                require id="won"
-                ref={wonInputRef}/>
-            </div>
-            <div>
-            <p>Winnings: {winnings}€</p>
-                <h>Amount won</h>
-                <input type='range'
-                required id='amountWon'
+            <div className="input-container ic2">
+                <input type="number" 
+                required 
+                id="amountWon" 
                 min='0'
                 max='100'
-                step='1'
-                onChange={changeWinnings}
-                value={winnings}
+                step='1' 
+                className="input"
                 ref={amountWonInputRef}/>
-                
+                <div className="cut"></div>
+                <label htmlFor="amountWon" className="placeholder">Winnings</label>
             </div>
-            <div>
-            <p>Buy-in: {buyin}€</p>
-            <input type='range'
-                required id='buyin'
+            <div className="input-container ic2">
+                <input type="number" 
+                required 
+                id="buyin" 
+                min='0'
+                max='100'
+                step='1' 
+                className="input"
+                ref={buyinInputRef}/>
+                <div className="cut"></div>
+                <label htmlFor="buyin" className="placeholder">Buy-in price</label>
+            </div>
+            <div className="checkbox-container">
+              <input
+                type="checkbox"
+                className="checkbox"
+                defaultChecked={false}
+                id="rebuyBox"
+                ref={rebuyInputRef}
+                onChange={toggleRebuyAmount}
+              />
+              <label htmlFor="rebuyBox" className="checkbox-label">Did you rebuy?</label>
+            </div>
+              {showRebuyAmount && (
+            <div className="input-container ic2">
+              <input
+                type='number'
+                required
+                id='rebuyAmount'
                 min='0'
                 max='100'
                 step='1'
-                onChange={changeBuyin}
-                value={buyin}
-                ref={buyinInputRef}/>
+                className="input"
+                ref={rebuyAmountRef}
+              />
+              <div className="cut"></div>
+              <label htmlFor="rebuyAmount" className="placeholder">Rebuy price</label>
             </div>
-            <div>
-                <button>Submit</button>
-            </div>
+          )}
+          <button className="submit">Submit</button>
         </form>
-        </div>
-    </div>
+      </div>
     );
 
 }

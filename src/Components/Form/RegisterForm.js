@@ -1,5 +1,7 @@
 
-import { useRef,useState } from "react";
+import { useRef } from "react";
+import "./form.css"
+import styles from "./register.module.css"
 export function RegisterForm(props) {
   const usernameInputRef = useRef();
   const passwordInputRef = useRef();
@@ -23,54 +25,47 @@ export function RegisterForm(props) {
   
 
   return (
-    <div>
-      <div >
-        <form onSubmit={registerSubmitHandler}>
-          <div>Register</div>
-          <div>
-            <label htmlFor="username">Username</label> <br />
-            <input type="text" required id="username" ref={usernameInputRef} />
-          </div>
-          <div>
-            <label htmlFor="password">Password</label> <br />
-            <input
-              required
-              id="password"
-              placeholder="********"
-              ref={passwordInputRef}
-            />
-          </div>
-          <div>
-            <label htmlFor="email">Email</label> <br />
-            <input
-              type="text"
-              required
-              id="email"
-              placeholder="name@email.com"
-              ref={emailInputRef}
-            />
-          </div>
-          <div>
-            <label htmlFor="postcode">Postcode</label> <br/>
-            <input
-                type="text"
-                required
-                id="postcode"
-                placeholder="e.g. NE4 5TG"
-                ref={postcodeInputRef}
-            />
-          </div>
-          <p>
-            Please, check your emails after registering.
-
-          </p>
-          <div>
-            <button className="submitButton">Submit</button>
-          </div>
-        </form>
-      </div>
+    
+    <div className={styles.body}>
+      <div className={styles.summary}>Welcome to our innovative poker app homepage!
+       Created to track and analyze poker statistics for you and your friends, 
+       our app allows you to post your own stats and gain insights into your gameplay.
+        With a focus on security, we ensure the protection of your data while providing a user-friendly experience.
+         Currently, we're developing a profile page where you can personalize your poker journey, access advanced stats,
+          and manage your account settings. Our goal is to create a vibrant poker community by making our website and app public,
+           connecting players, and fostering healthy competition. 
+           Join us and elevate your poker game with our feature-rich app!</div>
+      <form className="form" onSubmit={registerSubmitHandler}>
+        <div className="title">Register</div>
+        <div className="input-container ic1">
+          <input type="text" required id="username" className="input" ref={usernameInputRef} />
+          <div className="cut"></div>
+          <label htmlFor="username" className="placeholder">Username</label>
+        </div>
+        <div className="input-container ic2">
+          <input type="password" required id="password" className="input" ref={passwordInputRef} />
+          <div className="cut"></div>
+          <label htmlFor="password" className="placeholder">Password</label>
+        </div>
+        <div className="input-container ic2">
+          <input type="text" required id="email" className="input" ref={emailInputRef} />
+          <div className="cut cut-short"></div>
+          <label htmlFor="email" className="placeholder">Email</label>
+        </div>
+        <div className="input-container ic2">
+          <input type="text" required id="postcode" className="input" ref={postcodeInputRef} />
+          <div className="cut"></div>
+          <label htmlFor="postcode" className="placeholder">Postcode</label>
+        </div>
+        <button className="submit">Submit</button>
+        <div class="signup-link">
+               Already a member? <a  href='/login'>Log in now</a>
+            </div>
+      </form>
+      
     </div>
   );
+  
 }
 
 export default RegisterForm;
